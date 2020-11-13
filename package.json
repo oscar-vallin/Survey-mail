@@ -1,0 +1,19 @@
+{
+  "name": "email-surveys",
+  "version": "1.0.0",
+  "description": "email survey project",
+  "main": "index.js",
+  "engines": {
+    "node": "12.18,3",
+    "npm": "6.14.8"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "author": "oscar vallin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
