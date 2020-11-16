@@ -42,21 +42,21 @@ passport.use( new GoogleStrategy({
 }));
 
 //config facebook auth
-passport.use( new FacebookStrategy({
-    clientID: keys.clientFacebookID,
-    clientSecret: keys.clientFacebookSecret,
-    callbackURL: '/auth/facebook/callback',
-},(accessToken, refreshToken, profile, done) => {
-        User.findOne({facebookId: profile.id})
-            .then(existingUser => {
-                if(existingUser){
-                    //we already have a record with the given profile ID
-                    done(null, existingUser);
-                }else{
-                    new User({facebookId: profile.id, nameFacebook: profile.displayName}).save()
-                        .then(user => done(null,user))
-                        .catch(error => console.error(error));
-                }
-            });
+// passport.use( new FacebookStrategy({
+//     clientID: keys.clientFacebookID,
+//     clientSecret: keys.clientFacebookSecret,
+//     callbackURL: '/auth/facebook/callback',
+// },(accessToken, refreshToken, profile, done) => {
+//         User.findOne({facebookId: profile.id})
+//             .then(existingUser => {
+//                 if(existingUser){
+//                     //we already have a record with the given profile ID
+//                     done(null, existingUser);
+//                 }else{
+//                     new User({facebookId: profile.id, nameFacebook: profile.displayName}).save()
+//                         .then(user => done(null,user))
+//                         .catch(error => console.error(error));
+//                 }
+//             });
 
-}));
+// }));
