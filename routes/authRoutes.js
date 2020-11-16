@@ -17,4 +17,15 @@ module.exports = app => {
     app.get("/auth/facebook", passport.authenticate('facebook'))
     //callback auth facebook
     app.get("/auth/facebook/callback", passport.authenticate('facebook'));
+
+    //log out
+    app.get("/api/logout", (req,res) => {
+        req.logout();
+        res.send(req.user)
+    })
+
+    //show user
+    app.get("/api/current_user", (req,res) => {
+        res.json(req.user)
+    });
 }
