@@ -13,10 +13,10 @@ module.exports = app => {
     //callback auth google
     app.get("/auth/google/callback", passport.authenticate('google'));
 
-    //auth facebook
-    app.get("/auth/facebook", passport.authenticate('facebook'))
-    //callback auth facebook
-    app.get("/auth/facebook/callback", passport.authenticate('facebook'));
+    // //auth facebook
+    // app.get("/auth/facebook", passport.authenticate('facebook'))
+    // //callback auth facebook
+    // app.get("/auth/facebook/callback", passport.authenticate('facebook'));
 
     //log out
     app.get("/api/logout", (req,res) => {
