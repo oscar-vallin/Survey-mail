@@ -7,18 +7,29 @@ module.exports = app => {
         scope: ['profile', 'email'],
     }));
     //callback auth google
-    app.get("/auth/google/callback", passport.authenticate('google'));
+    app.get("/auth/google/callback", 
+        passport.authenticate('google'),
+        (req,res) => {
+            res.redirect("/surveys");
+        }
+        );
 
     // //auth facebook
-    // app.get("/auth/facebook", passport.authenticate('facebook'))
+    app.get("/auth/facebook", passport.authenticate('facebook',{
+        scope: ['user_friends']
+    }));
     // //callback auth facebook
-    // app.get("/auth/facebook/callback", passport.authenticate('facebook'));
-
+    app.get("/auth/facebook/callback",
+        passport.authenticate('facebook'),
+        (req,res) => {
+            res.redirect("/surveys");
+        });
+        
     //log out
     app.get("/api/logout", (req,res) => {
         req.logout();
-        res.send(req.user)
-    })
+        res.redirect("/");
+    });
 
     //show user
     app.get("/api/current_user", (req,res) => {
