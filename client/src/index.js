@@ -9,6 +9,8 @@ import App from './components/App';
 
 // reducers
 import reducers from './reducers';
+import axios from 'axios';
+window.axios = axios;
 
 // redux dev-tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -7,7 +7,7 @@ import Payments from '../Payments';
 const Header = () => {
 
     const auth = useSelector(state => state.auth);
-   console.log(auth)
+ 
     const renderContent = () => {
         switch (auth) {
             case null:
@@ -15,7 +15,7 @@ const Header = () => {
             case false:
                 return (
                     <Fragment>
-                         <li><a href="/auth/facebook">addFacebook</a></li>
+                         <li><a href="/auth/facebook">Login with Facebook</a></li>
                          <li><a href="/auth/google">Login with Google</a></li>
                     </Fragment>
                 )

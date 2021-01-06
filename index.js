@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Survey');
+
 require('./services/passport');
 
 const app = express();
@@ -34,6 +36,8 @@ const db = async () => {
         useUnifiedTopology: true,
         useFindAndModify: false,
         useCreateIndex: true
+      }, () => {
+          console.log("Connect DB")
       });
 };
 db();
@@ -41,6 +45,7 @@ db();
 //our routes
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if(process.env.NODE_ENV === 'production'){
     //Express will server up production assets

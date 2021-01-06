@@ -8,7 +8,7 @@ const useSchema = new Schema({
     nameFacebook: String,
     credits : {
         type: Number,
-        default: 0
+        default: 5
     }
 });
 

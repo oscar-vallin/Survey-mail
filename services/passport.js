@@ -25,7 +25,7 @@ passport.use( new GoogleStrategy({
     callbackURL: '/auth/google/callback',
     proxy: true //if our request is a proxy, it's ok
 }, async (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
+ 
       const existingUser = await User.findOne({googleId: profile.id});
                 if(existingUser){
                     //we already have a record with the given profile ID
@@ -46,7 +46,7 @@ passport.use( new FacebookStrategy({
     callbackURL: '/auth/facebook/callback',
     proxy: true
 },async (accessToken, refreshToken, profile, cb) => {
-    console.log(profile)
+  
        const existingUser = await User.findOne({facebookId: profile.id});
 
                 if(existingUser){
