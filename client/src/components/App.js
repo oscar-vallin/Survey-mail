@@ -6,10 +6,13 @@ import * as actions from '../actions';
 import Header from './header/Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
+import Payments from './payments/Payments';
 import SurveyNew from './surveys/SurveyNew';
+
 
 const  App  = () =>{
 
+    console.log(process.env)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,6 +26,7 @@ const  App  = () =>{
                     <Switch>
                         <Route exact path="/" component={Landing} />
                         <Route exact path="/surveys" component={Dashboard} />
+                        <Route exact path="/payments" component={Payments} />
                         <Route exact path="/surveys/new" component={SurveyNew} />
                     </Switch>
                 </Router>

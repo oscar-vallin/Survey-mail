@@ -13,12 +13,13 @@ export const fetchUser = () => async dispacth => {
 
 //send token to backend
 export const handleToken = token => async dispacth =>{
+    
     const res = await axios.post('/api/stripe', token);
-
+ 
     dispacth({
         type: FETCH_USER,
         payload: res.data
-    })
+    });
 };
 
 export const submitSurvey = (values, history) => async dispacth => {

@@ -6,7 +6,7 @@ const SurveyList = () => {
 
     const surveys = useSelector(state => state.survey);
     const dispacth = useDispatch();
-    console.log(surveys.surveys)
+    
     useEffect(() => {
         dispacth(fetchSurveys());
     },[dispacth]);
