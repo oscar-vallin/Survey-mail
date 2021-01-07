@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-// import Payments from '../payments/Payments';
+import Payments from '../payments/Payments';
 
 const Header = () => {
 
@@ -21,7 +21,7 @@ const Header = () => {
                 )
             default:
                 return [
-                    <li key="2" ><Link to="/payments">Add Credit</Link></li>,
+                    <li key="2" ><Payments/></li>,
                     <li key="1">Credits {auth.credits}</li>,
                     <li key="3"><a href="/api/logout">Log Outh</a></li>
                 ]
