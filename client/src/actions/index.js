@@ -13,7 +13,7 @@ export const fetchUser = () => async dispacth => {
 
 //send token to backend
 export const handleToken = token => async dispacth =>{
-    
+    console.log(token); 
     const res = await axios.post('/api/stripe', token);
  
     dispacth({

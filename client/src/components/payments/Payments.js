@@ -1,22 +1,12 @@
-// import {loadStripe} from '@stripe/stripe-js';
-// import {Elements} from '@stripe/react-stripe-js';
 import {useDispatch} from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout'
-// import CheckoutForm from './CheckoutForm';
 
-// const stripePormise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
-
-import * as actions from '../../actions';
+import * as actions from '../../actions/';
 
 
 const Payments = () => {
-
     const dispatch = useDispatch();
     return(
-
-        // <Elements  stripe={stripePormise} >
-        //     <CheckoutForm />
-        // </Elements>
         <StripeCheckout 
             name="Email"
             description="$5 for 5 email credits"

@@ -12,7 +12,6 @@ import SurveyNew from './surveys/SurveyNew';
 
 const  App  = () =>{
 
-    console.log(process.env)
     const dispatch = useDispatch();
 
     useEffect(() => {
