@@ -14,6 +14,7 @@ module.exports = app => {
             res.redirect("/surveys");
         }
         );
+
         
     //log out
     app.get("/api/logout", (req,res) => {
