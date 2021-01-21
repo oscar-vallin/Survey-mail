@@ -10,7 +10,7 @@ const useSchema = new Schema({
     email: String,
     credits : {
         type: Number,
-        default: 10
+        default: 5
     }
 });
 
