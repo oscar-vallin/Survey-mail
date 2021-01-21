@@ -52,9 +52,9 @@ passport.use( new FacebookStrategy({
     proxy: true,
 }, async (token, refreshToken, profile, cb) => {
 
-    const exitingUser = await User.findOne({facebookId: profile.id});
+    const existingUser = await User.findOne({facebookId: profile.id});
 
-    if(exitingUser){
+    if(existingUser){
         //we already have a record with the given profile ID
          return cb(null, existingUser);
     }else{
