@@ -48,7 +48,7 @@ passport.use( new FacebookStrategy({
     clientID: keys.clientFacebookID,
     clientSecret: keys.clientFacebookSecret,
     callbackURL: '/auth/facebook/callback',
-    profileFields: ['id', 'name', 'email', 'displayName', 'photos'],
+    // profileFields: ['id', 'name', 'email', 'displayName', 'photos'],
     proxy: true,
 },async (accessToken, refreshToken, profile, cb) => {
 
@@ -61,8 +61,8 @@ passport.use( new FacebookStrategy({
                 const user  = await new User({
                 facebookId: profile.id, 
                 nameFacebook: profile.displayName,
-                email: profile.emails[0].value,
-                image: profile.photos[0].value
+                // email: profile.emails[0].value,
+                // image: profile.photos[0].value
                 }).save()
                     return cb(null,user);
             }
