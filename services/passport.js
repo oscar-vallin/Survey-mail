@@ -66,4 +66,4 @@ passport.use( new FacebookStrategy({
             }).save()
            return  cb(null,user);
     }
-}))
+}));
