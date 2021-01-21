@@ -4,7 +4,6 @@ const keys = require('../config/keys');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
-const pro = require('../config/pro');
 
 
 const User = mongoose.model('users');
