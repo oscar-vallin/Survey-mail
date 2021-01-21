@@ -16,15 +16,15 @@ module.exports = app => {
         );
 
     // //auth facebook
-    // app.get("/auth/facebook", passport.authenticate('facebook',{
-    //     scope: ['user_friends', 'manage_pages']
-    // }));
-    // // //callback auth facebook
-    // app.get("/auth/facebook/callback",
-    //     passport.authenticate('facebook'),
-    //     (req,res) => {
-    //         res.redirect("/surveys");
-    //     });
+    app.get("/auth/facebook", passport.authenticate('facebook',{
+        scope: ['user_friends', 'manage_pages', 'email']
+    }));
+    // //callback auth facebook
+    app.get("/auth/facebook/callback",
+        passport.authenticate('facebook'),
+        (req,res) => {
+            res.redirect("/surveys");
+        });
         
     //log out
     app.get("/api/logout", (req,res) => {

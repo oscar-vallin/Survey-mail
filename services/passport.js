@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const FacebookStrategy = require('passport-facebook').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 
 const User = mongoose.model('users');
@@ -28,7 +28,7 @@ passport.use( new GoogleStrategy({
     const existingUser = await User.findOne({googleId: profile.id});
             if(existingUser){
                 //we already have a record with the given profile ID
-                done(null, existingUser);
+               return done(null, existingUser);
             }else{
                 //we do not have a user record with this ID, make a new record
                 const user = await new User({
@@ -37,35 +37,33 @@ passport.use( new GoogleStrategy({
                     email: profile.emails[0].value,
                     image: profile.photos[0].value
                     }).save()
-                done(null,user)
+               return done(null,user)
             }
         }
     )
 );
 
 // config facebook auth
-// passport.use( new FacebookStrategy({
-//     clientID: keys.clientFacebookID,
-//     clientSecret: keys.clientFacebookSecret,
-//     callbackURL: '/auth/facebook/callback',
-//     profileFields: ['id', 'name', 'email', 'displayName', 'photos'],
-//     proxy: true,
-// },async (accessToken, refreshToken, profile, cb) => {
+passport.use( new FacebookStrategy({
+    clientID: keys.clientFacebookID,
+    clientSecret: keys.clientFacebookSecret,
+    callbackURL: '/auth/facebook/callback',
+    profileFields:  ['id', 'name', 'email', 'displayName', 'photos'],
+    proxy: true,
+}, async (token, refreshToken, profile, cb) => {
 
-//        const existingUser = await User.findOne({facebookId: profile.id});
+    const exitingUser = await User.findOne({facebookId: profile.id});
 
-//             if(existingUser){
-//                 //we already have a record with the given profile ID
-//                 return cb(null, existingUser);
-//             }else{
-//                 const user  = await new User({
-//                 facebookId: profile.id, 
-//                 nameFacebook: profile.displayName,
-//                 email: profile.emails[0].value,
-//                 image: profile.photos[0].value
-//                 }).save()
-//                     return cb(null,user);
-//             }
-//     }
-
-// ));
+    if(exitingUser){
+        //we already have a record with the given profile ID
+         return cb(null, existingUser);
+    }else{
+        const user  = await new User({
+            facebookId: profile.id, 
+            nameFacebook: profile.displayName,
+            email: profile.emails[0].value,
+            image: profile.photos[0].value
+            }).save()
+           return  cb(null,user);
+    }
+}))
