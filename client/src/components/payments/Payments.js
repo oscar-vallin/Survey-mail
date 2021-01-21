@@ -18,7 +18,7 @@ const Payments = () => {
             }}
             
         >
-            <button className="btn">Add credits</button>
+            <button className="btn-small">Add credits</button>
         </StripeCheckout>    
     );
 }

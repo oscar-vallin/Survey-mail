@@ -15,6 +15,16 @@ module.exports = app => {
         }
         );
 
+    // //auth facebook
+    app.get("/auth/facebook", passport.authenticate('facebook',{
+        scope: ['email']
+    }));
+    // //callback auth facebook
+    app.get("/auth/facebook/callback",
+        passport.authenticate('facebook'),
+        (req,res) => {
+            res.redirect("/surveys");
+        });
         
     //log out
     app.get("/api/logout", (req,res) => {
