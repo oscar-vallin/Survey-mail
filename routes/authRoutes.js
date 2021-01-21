@@ -17,7 +17,7 @@ module.exports = app => {
 
     // //auth facebook
     app.get("/auth/facebook", passport.authenticate('facebook',{
-        scope: ['user_friends', 'email']
+        scope: ['email']
     }));
     // //callback auth facebook
     app.get("/auth/facebook/callback",
