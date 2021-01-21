@@ -20,7 +20,7 @@ const SurveyList = () => {
                         {survey.body}
                     </p>
                     <p className="right">
-                        Sento on: {new Date(survey.dateSent).toLocaleDateString()}
+                        Sent on: {new Date(survey.dateSent).toLocaleDateString()}
                     </p>
                 </div>
                 <div className="card-action">
